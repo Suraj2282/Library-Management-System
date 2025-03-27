@@ -1,0 +1,7 @@
+package com.cts.liveproject.librarymanagementsystem.services.impl;
+
+import com.cts.liveproject.librarymanagementsystem.services.AuthorService;
+
+public class AuthorServiceImpl implements AuthorService {
+
+}

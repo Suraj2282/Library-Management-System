@@ -1,0 +1,9 @@
+package com.cts.liveproject.librarymanagementsystem.services;
+
+import com.cts.liveproject.librarymanagementsystem.entities.Author;
+
+public interface AuthorService {
+	
+	private Author findByAuthorName(String name);
+
+}

@@ -1,0 +1,8 @@
+package com.cts.liveproject.librarymanagementsystem.enums;
+
+public enum Membership {
+
+	MEMBERSHIP,
+	
+	FREESHIP
+}

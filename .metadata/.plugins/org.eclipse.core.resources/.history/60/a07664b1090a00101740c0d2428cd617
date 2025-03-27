@@ -1,0 +1,5 @@
+package com.cts.liveproject.librarymanagementsystem.services.admin;
+
+public interface AdminService {
+
+}

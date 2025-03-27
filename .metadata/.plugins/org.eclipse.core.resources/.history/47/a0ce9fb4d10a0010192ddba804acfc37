@@ -1,0 +1,28 @@
+package com.cts.liveproject.librarymanagementsystem.services.userserviceimpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.cts.liveproject.librarymanagementsystem.entities.User;
+import com.cts.liveproject.librarymanagementsystem.enums.Membership;
+import com.cts.liveproject.librarymanagementsystem.enums.UserRoles;
+import com.cts.liveproject.librarymanagementsystem.repositories.UserRepository;
+import com.cts.liveproject.librarymanagementsystem.services.userservice.UserService;
+
+public class UserServiceImpl implements UserService{
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	
+	@Override
+	public User registerUser(User user) {
+		User newUser = new User();
+		newUser = user;
+		
+		newUser.setUserRole(UserRoles.BORROWER);
+		newUser.setUserSubscription(Membership.FREESHIP);
+		
+		return userRepository.save(newUser);
+	}
+
+}

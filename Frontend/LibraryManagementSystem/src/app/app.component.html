@@ -1,0 +1,43 @@
+<div *ngIf="!isAdminLoggedIn && !isBorrowerLoggedIn">
+    <mat-toolbar color="primary" class="navbar">
+      <div class="left">
+        <span class="navbar-brand">Library Management System</span>
+        <span class="spacer"></span>
+      </div>
+       <div class="right">
+        <button mat-button routerLink="/register" routerLinkActive="active" class="button">Sign Up</button>
+        <button mat-button routerLink="/login" routerLinkActive="active" class="button">SignIn</button>
+       </div>
+    </mat-toolbar>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+    <mat-toolbar color="primary" class="navbar" >
+       <div class="left">
+        <span class="navbar-brand">Library Management System</span>
+        <span class="spacer"></span>
+       </div>
+        <div class="right">
+        <button mat-button routerLink="admin/dashboard" routerLinkActive="active" class="button" >Dashboard</button>
+        <button mat-button routerLink="admin/addbooks" routerLinkActive="active" class="button" >Add Book</button>
+        <button mat-button (click)="logout()"outerLinkActive="active" class="button" >Logout</button>
+        </div>
+    </mat-toolbar>
+</div>
+
+<div *ngIf="isBorrowerLoggedIn">
+    <mat-toolbar color="primary" class="navbar" >
+      <div class="left">
+        <span class="navbar-brand">Dnyanved Librarys</span>
+        <span class="spacer"></span>
+      </div>
+        <div class="right">
+            <button mat-button routerLink="borrower/dashboard" routerLinkActive="active" class="button" >Dashboard</button>
+        <button mat-button (click)="logout()"outerLinkActive="active" class="button" >Logout</button>
+        </div>
+    </mat-toolbar>
+</div>
+
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,10 @@
+package com.cts.liveproject.librarymanagementsystem.services.adminimpl;
+
+import org.springframework.stereotype.Service;
+
+import com.cts.liveproject.librarymanagementsystem.services.admin.AdminService;
+
+@Service
+public class AdminServiceImpl implements AdminService {
+
+}

@@ -1,0 +1,30 @@
+package com.cts.liveproject.librarymanagementsystem.entities;
+
+import java.sql.Date;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+public class Author {
+	
+	@Id
+	private String authorId;
+	private String authorName;
+	private String authorEmail;
+	private Date authorRegistration;
+	
+	@OneToMany(mappedBy = "author")
+	private List<Book> books;
+
+}

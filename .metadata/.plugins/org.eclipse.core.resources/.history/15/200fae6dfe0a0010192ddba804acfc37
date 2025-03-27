@@ -1,0 +1,23 @@
+package com.cts.liveproject.librarymanagementsystem.entities;
+
+import java.sql.Date;
+
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+public class Author {
+	
+	private String authorId;
+	private String authorName;
+	private String authorEmail;
+	private Date authorRegistration;
+
+}

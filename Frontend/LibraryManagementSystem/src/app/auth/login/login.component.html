@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="bg">
+        <div class="parent">
+            <div class="child">
+                <div class="logo">
+                    <!-- <img src="Logo.png" alt="Logo"> -->
+                </div>
+                <h1 class="form-title">
+                    SignIn
+                </h1>
+                <form class="login-form" [formGroup]="loginForm">
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" placeholder="Enter Email" formControlName="email" required style="color: #fff;">
+                        <mat-error *ngIf="loginForm.get('email')?.hasError('required')">This input is required</mat-error>
+                        <mat-error *ngIf="loginForm.get('email')?.hasError('email')">Please enter a valid email address</mat-error>
+                    </mat-form-field>
+    
+                    <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" placeholder="Enter Password" formControlName="password" required style="color:#fff">
+                        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Please enter a valid password</mat-error>
+                        
+                        </mat-form-field>
+    
+                    <button mat-stroked-button color="" (click)="login()" [disabled]="loginForm.invalid">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,5 @@
+package com.cts.liveproject.librarymanagementsystem.config;
+
+public class SimpleCorsFilter {
+
+}

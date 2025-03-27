@@ -1,0 +1,9 @@
+package com.cts.liveproject.librarymanagementsystem.enums;
+
+public enum UserRoles {
+
+	ADMIN,
+	
+	BORROWER
+	
+}

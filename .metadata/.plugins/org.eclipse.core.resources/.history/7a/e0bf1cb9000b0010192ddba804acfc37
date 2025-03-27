@@ -1,0 +1,5 @@
+package com.cts.liveproject.librarymanagementsystem.services.impl;
+
+public class AuthorServiceImpl {
+
+}

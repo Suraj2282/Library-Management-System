@@ -1,0 +1,35 @@
+package com.cts.liveproject.librarymanagementsystem.services.adminimpl;
+
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.cts.liveproject.librarymanagementsystem.entities.User;
+import com.cts.liveproject.librarymanagementsystem.repositories.UserRepository;
+import com.cts.liveproject.librarymanagementsystem.services.admin.AdminService;
+
+import jakarta.annotation.PostConstruct;
+
+@Service
+public class AdminServiceImpl {
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	
+	@PostConstruct
+	public void createAdminAccount() {
+		User adminAccount = new User();
+		
+		
+		adminAccount.setUserEmail("admin@admin.com");
+		adminAccount.setUserPassword(new BCryptPasswordEncoder().encode("admin"));
+		
+		userRepository.save(adminAccount);
+		
+		
+	}
+
+}

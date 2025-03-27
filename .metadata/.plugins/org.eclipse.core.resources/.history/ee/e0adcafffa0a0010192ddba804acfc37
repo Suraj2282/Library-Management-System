@@ -1,0 +1,9 @@
+package com.cts.liveproject.librarymanagementsystem.services.adminservices;
+
+import com.cts.liveproject.librarymanagementsystem.entities.User;
+
+public interface AdminService {
+	
+	public String getUserName(Long id);
+
+}

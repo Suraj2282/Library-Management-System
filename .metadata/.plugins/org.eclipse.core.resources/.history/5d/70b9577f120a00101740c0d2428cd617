@@ -1,0 +1,36 @@
+package com.cts.liveproject.librarymanagementsystem.utils;
+
+import java.sql.Date;
+import java.util.function.Function;
+
+import io.jsonwebtoken.Claims;
+
+public class JwtUtils {
+		
+	public static final String SECRET = "";
+	
+	public String extractUserName(String token)
+	{
+		return extractClaim(token, Claims::getSubject);
+		
+	}
+
+	public Date extractExpiration(String token)
+	{
+		return extractClaim(token, Claims::getExpiration);
+	}
+	
+	public <T> T extractClaim(String token, Function<Claims,T> claimResolver)
+	{
+		final Claims claims = extractAllClaims(token);
+		return claimResolver.apply(claims);
+	}
+	private String extractClaim(String token, Object object) {
+		
+		return null;
+	}
+	
+	
+	
+
+}

@@ -1,0 +1,5 @@
+package com.cts.liveproject.librarymanagementsystem.services.userservice;
+
+public interface UserService {
+
+}

@@ -1,0 +1,5 @@
+package com.cts.liveproject.librarymanagementsystem.repositories;
+
+public interface AuthorRepository {
+
+}
