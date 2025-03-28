@@ -34,7 +34,7 @@ public class Book {
 	private String bookEdition;
 	private String bookSummary;
 	private double bookPrice;
-	private BookAvailability bookAvailabaility;
+	private BookAvailability bookAvailability;
 	private double bookRating;
 	
 	@ManyToOne

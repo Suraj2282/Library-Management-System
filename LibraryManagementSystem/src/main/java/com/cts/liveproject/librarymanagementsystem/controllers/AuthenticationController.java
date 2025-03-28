@@ -41,7 +41,7 @@ public class AuthenticationController {
 	private UserRepository userRepository;
 	
 	public static final String TOKEN_PREFIX="Bearer ";
-	public static final String HEADER_STRING="Authorization ";
+	public static final String HEADER_STRING="Authorization";
 	
 	@PostMapping("/authenticate")
 	public void createAuthentiationToken(@RequestBody AuthenticationRequest authenticationRequest, HttpServletResponse response) throws IOException, JSONException

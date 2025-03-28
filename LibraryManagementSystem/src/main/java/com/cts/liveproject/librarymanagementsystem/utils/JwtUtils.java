@@ -10,6 +10,8 @@ import java.util.function.Function;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,8 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtils {
+	
+	private Logger log = LoggerFactory.getLogger(JwtUtils.class);
 		
 	 private String secretkey = "";
 
@@ -43,10 +47,10 @@ public class JwtUtils {
 	        Map<String, Object> claims =new HashMap<>();
 	        
 	        return Jwts.builder()
-	                .setClaims(claims)
-	                .setSubject(username)
-	                .setIssuedAt(new Date(System.currentTimeMillis()))
-	                .setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 1000)) // 1 hour
+	                .claims(claims)
+	                .subject(username)
+	                .issuedAt(new Date(System.currentTimeMillis()))
+	                .expiration(new Date(System.currentTimeMillis() + 60 * 60 * 1000)) // 1 hour
 	                .signWith(getKey())
 	                .compact();
 	    }
@@ -85,10 +89,16 @@ public class JwtUtils {
 
 	    public boolean validateToken(String token, UserDetails userDetails) {
 	        final String userName = extractUserName(token);
-
+	        
+	        log.info("{}", userName);
+	        
 	        boolean tokenResult= !isTokenExpired(token);
+	        
+	        log.info("{}", tokenResult);
 
 	        boolean result=userName.equals(userDetails.getUsername()) && !isTokenExpired(token);
+	        
+	        log.info("{}", result);
 	      
 	        return result;
 	    }

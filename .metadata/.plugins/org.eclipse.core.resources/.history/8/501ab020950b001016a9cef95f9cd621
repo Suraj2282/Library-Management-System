@@ -1,0 +1,114 @@
+package com.cts.liveproject.librarymanagementsystem.utils;
+
+import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
+import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
+
+@Component
+public class JwtUtils {
+	
+	private Logger log = LoggerFactory.getLogger(JwtUtils.class);
+		
+	 private String secretkey = "";
+
+	   
+	    public JwtUtils() {
+
+	        try {
+	            KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
+	            SecretKey sk = keyGen.generateKey();
+	            secretkey = Base64.getEncoder().encodeToString(sk.getEncoded());
+//	            log.info("Secret key generated");
+	        } catch (NoSuchAlgorithmException e) {
+//	        	log.info("Exception in creation of secret key");
+	            throw new RuntimeException(e);
+	            
+	        }
+	    }
+
+	    public String generateToken(String username) {
+	        Map<String, Object> claims =new HashMap<>();
+	        
+	        return Jwts.builder()
+	                .setClaims(claims)
+	                .setSubject(username)
+	                .setIssuedAt(new Date(System.currentTimeMillis()))
+	                .setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 1000)) // 1 hour
+	                .signWith(getKey())
+	                .compact();
+	    }
+
+	        
+
+	    
+
+	    private SecretKey getKey() {
+	        byte[] keyBytes = Decoders.BASE64.decode(secretkey);
+
+	        return Keys.hmacShaKeyFor(keyBytes);
+	    }
+
+	    public String extractUserName(String token) {
+
+	        return extractClaim(token, Claims::getSubject);
+	    }
+
+	    private <T> T extractClaim(String token, Function<Claims, T> claimResolver) {
+	        final Claims claims = extractAllClaims(token);
+
+	        return claimResolver.apply(claims);
+	    }
+
+	    public Claims extractAllClaims(String token) {
+
+	       return Jwts.parser()
+	                .verifyWith(getKey())
+	                .build()
+	                .parseSignedClaims(token)
+	                .getPayload();
+	        		
+	        			
+	    }
+
+	    public boolean validateToken(String token, UserDetails userDetails) {
+	        final String userName = extractUserName(token);
+	        
+	        log.info("{}", username);
+	        boolean tokenResult= !isTokenExpired(token);
+
+	        boolean result=userName.equals(userDetails.getUsername()) && !isTokenExpired(token);
+	      
+	        return result;
+	    }
+
+	    private boolean isTokenExpired(String token) {
+
+	        return extractExpiration(token).before(new java.util.Date());
+	    }
+
+	    private java.util.Date extractExpiration(String token) {
+
+	        return extractClaim(token, Claims::getExpiration);
+	    }
+	
+	
+	
+
+}

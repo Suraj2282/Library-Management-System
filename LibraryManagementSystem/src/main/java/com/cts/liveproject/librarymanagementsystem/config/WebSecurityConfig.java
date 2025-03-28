@@ -31,6 +31,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/authenticate", "/lms/register").permitAll()
                         .requestMatchers("/admin/**").authenticated()
+                        .requestMatchers("/book/**").authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
