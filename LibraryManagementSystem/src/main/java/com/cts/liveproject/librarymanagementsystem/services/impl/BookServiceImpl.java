@@ -1,11 +1,14 @@
 package com.cts.liveproject.librarymanagementsystem.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cts.liveproject.librarymanagementsystem.dto.BookDto;
 import com.cts.liveproject.librarymanagementsystem.entities.Book;
 import com.cts.liveproject.librarymanagementsystem.repositories.BookRepository;
 import com.cts.liveproject.librarymanagementsystem.services.BookService;
@@ -17,10 +20,29 @@ public class BookServiceImpl implements BookService {
 	private BookRepository bookRepository;
 	
 	@Override
-	public Book saveBook(Book book) {
-		String bookId = UUID.randomUUID().toString();
-		book.setBookId(bookId);
-		return bookRepository.save(book);
+	public BookDto saveBook(BookDto book) {
+		
+		Optional<Book> bookExists = bookRepository.findByBookIsbn(book.getBookIsbn());
+		
+		if(bookExists.isEmpty())
+		{
+			Book createBook = new Book();
+			
+			BeanUtils.copyProperties(book, createBook);
+			
+			Book savedBook = bookRepository.save(createBook);
+			
+			BookDto createBookDto = new BookDto();
+			
+			createBookDto.setBookId(savedBook.getBookId());
+			createBookDto.setBookTitle(savedBook.getBookTitle());
+			
+			return createBookDto;
+		}
+		return null;
+		
+		
+		
 	}
 
 	@Override

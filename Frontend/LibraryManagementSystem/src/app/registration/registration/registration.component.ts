@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RegistrationServiceService } from '../services/registration-service.service';
-import { C } from '@angular/cdk/keycodes';
+
 
 @Component({
   selector: 'app-registration',
@@ -28,11 +28,11 @@ export class RegistrationComponent {
       ngOnInit()
       {
         this.registerForm = this.fb.group({
-          userEmail:['', Validators.required, Validators.email],
-          userName:['',Validators.required],
-          userMobile:['', Validators.required],
-          userProfession:['', Validators.required],
-          userPassword:['', Validators.required]
+          email:['', Validators.required, Validators.email],
+          name:['',Validators.required],
+          mobile:['', Validators.required],
+          profession:['', Validators.required],
+          password:['', Validators.required]
         })
       }
       register()
@@ -44,10 +44,14 @@ export class RegistrationComponent {
           if(response!=null)
           {
             this.snackbar.open("User Registration Successfull!!!!", "Close", {duration:5000});
+            this.registerForm.reset;
+            this.router.navigateByUrl('/login');
           }
           else
           {
-            this.snackbar.open("Something went Wrong", "Close", {duration:5000});
+            this.snackbar.open("User Already Exist", "Close", {duration:5000});
+            this.registerForm.reset;
+            this.router.navigateByUrl('/login');
 
           }
         

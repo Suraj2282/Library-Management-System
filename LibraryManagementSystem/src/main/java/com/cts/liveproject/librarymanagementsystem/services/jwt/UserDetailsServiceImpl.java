@@ -1,9 +1,17 @@
 package com.cts.liveproject.librarymanagementsystem.services.jwt;
 
+
+
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,26 +20,24 @@ import org.springframework.stereotype.Service;
 import com.cts.liveproject.librarymanagementsystem.entities.User;
 import com.cts.liveproject.librarymanagementsystem.repositories.UserRepository;
 
+
+
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService{
+public class UserDetailsServiceImpl implements UserDetailsService {
 
-	@Autowired
-	private UserRepository userRepository;
-	
-	
-	
-	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		
-		Optional<User> userOptional = userRepository.findFirstByUserEmail(email);
-		if(userOptional.isEmpty()) throw new UsernameNotFoundException("Username not found", null);
-		return new org.springframework.security.core.userdetails.User(userOptional.get().getUserEmail(), userOptional.get().getUserPassword(), new ArrayList<>());
-		
-		
-		
-	}
-	
-	
-	
+    @Autowired
+    private UserRepository userRepository;
 
+    private final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findFirstByUserEmail(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+
+        List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority(user.getUserRole().toString()));
+        log.info("Loaded Authorities for user {}: {}", username, authorities);
+
+        return new org.springframework.security.core.userdetails.User(user.getUserEmail(), user.getUserPassword(), authorities);
+    }
 }

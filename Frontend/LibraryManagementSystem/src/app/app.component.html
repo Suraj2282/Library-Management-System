@@ -28,11 +28,12 @@
 <div *ngIf="isBorrowerLoggedIn">
     <mat-toolbar color="primary" class="navbar" >
       <div class="left">
-        <span class="navbar-brand">Dnyanved Librarys</span>
+        <span class="navbar-brand">Dnyanved Libraries</span>
         <span class="spacer"></span>
       </div>
         <div class="right">
             <button mat-button routerLink="borrower/dashboard" routerLinkActive="active" class="button" >Dashboard</button>
+            <button mat-button routerLink="borrower/books" routerLinkActive="active" class="button" >Explore Books</button>
         <button mat-button (click)="logout()"outerLinkActive="active" class="button" >Logout</button>
         </div>
     </mat-toolbar>

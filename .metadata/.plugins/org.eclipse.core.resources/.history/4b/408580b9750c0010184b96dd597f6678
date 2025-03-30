@@ -1,0 +1,33 @@
+package com.cts.liveproject.librarymanagementsystem.dto;
+
+import java.sql.Date;
+
+import com.cts.liveproject.librarymanagementsystem.entities.Author;
+import com.cts.liveproject.librarymanagementsystem.enums.BookAvailability;
+
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor o
+public class BookDto {
+	
+	private String bookId;
+	private String bookTitle;
+	private String bookIsbn;
+	private String bookGenre;
+	private Date bookPublication;
+	private String bookPublisher;
+	private String bookLanguage;
+	private int bookPages;
+	private String bookEdition;
+	private String bookSummary;
+	private double bookPrice;
+	private BookAvailability bookAvailability;
+	private double bookRating;
+	
+}

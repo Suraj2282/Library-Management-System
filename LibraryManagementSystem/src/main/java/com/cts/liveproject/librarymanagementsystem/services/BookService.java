@@ -2,11 +2,12 @@ package com.cts.liveproject.librarymanagementsystem.services;
 
 import java.util.List;
 
+import com.cts.liveproject.librarymanagementsystem.dto.BookDto;
 import com.cts.liveproject.librarymanagementsystem.entities.Book;
 
 public interface BookService {
 	
-	public Book saveBook(Book book);
+	public BookDto saveBook(BookDto book);
 	
 	public List<Book> allBooks();
 	
