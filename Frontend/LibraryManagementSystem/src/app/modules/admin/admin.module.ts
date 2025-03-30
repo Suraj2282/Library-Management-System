@@ -13,6 +13,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {HttpClientModule } from '@angular/common/http';
 
 
 
@@ -24,6 +25,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   imports: [
     CommonModule,
     AdminRoutingModule,
+    HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule,
@@ -33,7 +35,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDatepickerModule,
     ReactiveFormsModule,
     MatNativeDateModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class AdminModule { }

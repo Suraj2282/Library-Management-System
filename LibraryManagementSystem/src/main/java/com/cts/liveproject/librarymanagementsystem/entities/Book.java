@@ -37,9 +37,7 @@ public class Book {
 	private BookAvailability bookAvailability;
 	private double bookRating;
 	
-	@ManyToOne
-	@JoinColumn(name = "author_id")
-	private Author bookAuthor;
+	
 	
 	
 

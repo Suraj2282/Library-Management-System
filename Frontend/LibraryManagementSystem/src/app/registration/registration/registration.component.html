@@ -11,32 +11,32 @@
                 <form class="register-form" [formGroup]="registerForm">
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Name</mat-label>
-                        <input matInput type="text" placeholder="John Doe" formControlName="userName" required >
-                        <mat-error *ngIf="registerForm.get('userName')?.hasError('required')">Please enter a valid name</mat-error>
+                        <input matInput type="text" placeholder="John Doe" formControlName="name" required >
+                        <mat-error *ngIf="registerForm.get('name')?.hasError('required')">Please enter a valid name</mat-error>
 
                     </mat-form-field>
                     
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Email</mat-label>
-                        <input matInput type="email" placeholder="your@email.com" formControlName="userEmail" required >
-                        <mat-error *ngIf="registerForm.get('userEmail')?.hasError('required')">Please enter a valid Email</mat-error>
+                        <input matInput type="email" placeholder="your@email.com" formControlName="email" required >
+                        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">Please enter a valid Email</mat-error>
 
                     </mat-form-field>
                     
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Mobile Number</mat-label>
-                        <input matInput type="number" placeholder="1111111111" formControlName="userMobile" required >
-                        <mat-error *ngIf="registerForm.get('userMobile')?.hasError('required')">Please enter a valid mobile number</mat-error>
+                        <input matInput type="number" placeholder="1111111111" formControlName="mobile" required >
+                        <mat-error *ngIf="registerForm.get('mobile')?.hasError('required')">Please enter a valid mobile number</mat-error>
 
                     </mat-form-field>
                     
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Profession</mat-label>
-                        <input matInput type="text" placeholder="Profession" formControlName="userProfession" required>
-                        <mat-error *ngIf="registerForm.get('userProfession')?.hasError('required')">Please enter a valid profession</mat-error>
+                        <input matInput type="text" placeholder="Profession" formControlName="profession" required>
+                        <mat-error *ngIf="registerForm.get('profession')?.hasError('required')">Please enter a valid profession</mat-error>
 
                     </mat-form-field>
                     
@@ -44,8 +44,8 @@
     
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Password</mat-label>
-                        <input matInput type="password" placeholder="Enter Password" formControlName="userPassword" required>
-                        <mat-error *ngIf="registerForm.get('userPassword')?.hasError('required')">Please enter a valid password</mat-error>
+                        <input matInput type="password" placeholder="Enter Password" formControlName="password" required>
+                        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">Please enter a valid password</mat-error>
                         </mat-form-field>
     
                     <button mat-stroked-button color="" (click)="register()" [disabled]="registerForm.invalid">Sign Up</button>

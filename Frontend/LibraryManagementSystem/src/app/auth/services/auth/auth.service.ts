@@ -17,14 +17,14 @@ export class AuthService {
     private storage:StorageService
   ) {  }
 
-  login(email:string, password:string):Observable<any>{
+  login(requestEmail:string, requestPassword:string):Observable<any>{
 
-    const userEmail= email;
-    const userPassword=password;
+    const email= requestEmail;
+    const password=requestPassword;
     return this.http.post(BASIC_URL+'authenticate',
       {
-        userEmail,
-        userPassword
+        email,
+        password
       },{observe:'response'})
     .pipe(
     tap(__=>this.log("User Authentication")),

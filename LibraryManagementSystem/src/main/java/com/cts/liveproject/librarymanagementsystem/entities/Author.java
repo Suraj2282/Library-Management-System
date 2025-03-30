@@ -24,7 +24,6 @@ public class Author {
 	private String authorEmail;
 	private Date authorRegistration;
 	
-	@OneToMany(mappedBy = "bookAuthor")
-	private List<Book> books;
+	
 
 }

@@ -1,0 +1,38 @@
+package com.cts.liveproject.librarymanagementsystem.services.jwt;
+
+
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import com.cts.liveproject.librarymanagementsystem.entities.User;
+import com.cts.liveproject.librarymanagementsystem.repositories.UserRepository;
+
+
+
+@Service
+public class UserDetailsServiceImpl implements UserDetailsService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    private final Logger log = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUserEmail(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+
+        List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority(user.getUserRole()));
+        log.info("Loaded Authorities for user {}: {}", username, authorities);
+
+        return new org.springframework.security.core.userdetails.User(user.getUserEmail(), user.getUserPassword(), authorities);
+    }
+}
+}

@@ -4,7 +4,7 @@ import { StorageService } from '../../../../auth/services/storage-service/storag
 import { Observable } from 'rxjs';
 
 
-const BASE_URL = 'http://localhost:9090/';
+const BASE_URL = ['http://localhost:9090/'];
 @Injectable({
   providedIn: 'root'
 })
@@ -19,14 +19,16 @@ export class AdminServicesService {
 
   addBook(book:any):Observable<any>
   {
-      return this.http.post<[]>(BASE_URL+'book/addbook', book,{
+     
+      return this.http.post<[]>(BASE_URL+'api/admin/book', book,{
         headers:this.createAuthorizationHeader()
       });
   }
 
   createAuthorizationHeader():HttpHeaders{
     let authHeaders:HttpHeaders = new HttpHeaders();
-    return authHeaders.set('Authorization', 'Bearer ' + StorageService.getToken());
+    console.log(StorageService.getToken().trim());
+    return authHeaders.set('Authorization', "Bearer " + StorageService.getToken().replace(/^"|"$/g, ''));
   }
 
  

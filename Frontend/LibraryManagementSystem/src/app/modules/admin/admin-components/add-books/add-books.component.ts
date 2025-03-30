@@ -27,19 +27,19 @@ export class AddBooksComponent {
   ngOnInit()
   {
     this.addBookForm = this.fb.group({
-      bookTitle:['',Validators.required],
-      bookGenre:['', Validators.required],
-      bookIsbn:['', Validators.required],
-      bookPublication:['', Validators.required],
-      bookPublisher:['', Validators.required],
-      bookLanguage:['', Validators.required],
-      bookPages:['', Validators.required],
-      bookEdition:['', Validators.required],
-      bookSummary:['', Validators.required],
-      bookPrice:['', Validators.required],
-      bookAvailability:['', Validators.required],
-      bookAuthor:['', Validators.required],
-      bookRating:['', Validators.required]
+      title:['',Validators.required],
+      genre:['', Validators.required],
+      isbn:['', Validators.required],
+      publication:['', Validators.required],
+      publicationDate:['', Validators.required],
+      language:['', Validators.required],
+      pages:['', Validators.required],
+      edition:['', Validators.required],
+      summary:['', Validators.required],
+      price:['', Validators.required],
+      stock:['', Validators.required],
+      authorName:['', Validators.required],
+      rating:['', Validators.required]
     
     })
   }
@@ -48,6 +48,13 @@ export class AddBooksComponent {
     console.log(this.addBookForm.value);
     this.service.addBook(this.addBookForm.value).subscribe((response)=>{
       console.log(response);
+      if(response.status == 400)
+      {
+        this.snackbar.open("Book With ISBN is Already Exists", "Close", {duration:5000});
+      }
+      else if(response.status === 200){
+          this.snackbar.open("Book is added", "Close", {duration:5000});
+             }
 
       
     })

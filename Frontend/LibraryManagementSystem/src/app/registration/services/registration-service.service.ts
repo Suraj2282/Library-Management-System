@@ -16,6 +16,6 @@ export class RegistrationServiceService {
 
   register(register:any):Observable<any>
   {
-    return this.http.post(BASIC_URL+'lms/register', register);
+    return this.http.post(BASIC_URL+'register/user', register);
   }
 }

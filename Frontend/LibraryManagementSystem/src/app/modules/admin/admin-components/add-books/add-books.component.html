@@ -11,91 +11,91 @@
                 <form class="register-form" [formGroup]="addBookForm">
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Title</mat-label>
-                        <input matInput type="text" placeholder="Title" formControlName="bookTitle" required >
-                        <mat-error *ngIf="addBookForm.get('bookTitle')?.hasError('required')">Please enter a valid book title</mat-error>
+                        <input matInput type="text" placeholder="Title" formControlName="title" required >
+                        <mat-error *ngIf="addBookForm.get('title')?.hasError('required')">Please enter a valid book title</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>ISBN</mat-label>
-                        <input matInput type="text" placeholder="ISBN-0002" formControlName="bookIsbn" required >
-                        <mat-error *ngIf="addBookForm.get('bookIsbn')?.hasError('required')">Please enter a valid book ISBN</mat-error>
+                        <input matInput type="text" placeholder="ISBN-0002" formControlName="isbn" required >
+                        <mat-error *ngIf="addBookForm.get('isbn')?.hasError('required')">Please enter a valid book ISBN</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Genre</mat-label>
-                        <input matInput type="text" placeholder="Category" formControlName="bookGenre" required >
-                        <mat-error *ngIf="addBookForm.get('bookGenre')?.hasError('required')">Please enter a valid book Genre</mat-error>
+                        <input matInput type="text" placeholder="Category" formControlName="genre" required >
+                        <mat-error *ngIf="addBookForm.get('genre')?.hasError('required')">Please enter a valid book Genre</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field" >
                         <mat-label>Publication Date</mat-label>
-                            <input matInput formControlName="bookPublication" [matDatepicker]="picker">
+                            <input matInput formControlName="publicationDate" [matDatepicker]="picker">
                             <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                       
-                        <mat-error *ngIf="addBookForm.get('bookPublication')?.hasError('required')">Please enter a valid book publication date.</mat-error>
+                        <mat-error *ngIf="addBookForm.get('publicationDate')?.hasError('required')">Please enter a valid book publication date.</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Publisher</mat-label>
-                        <input matInput type="text" placeholder="ABC Publication" formControlName="bookPublisher" required >
-                        <mat-error *ngIf="addBookForm.get('bookPublisher')?.hasError('required')">Please enter a valid book publisher</mat-error>
+                        <input matInput type="text" placeholder="ABC Publication" formControlName="publication" required >
+                        <mat-error *ngIf="addBookForm.get('publication')?.hasError('required')">Please enter a valid book publisher</mat-error>
                     </mat-form-field>
                     
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Language</mat-label>
-                        <input matInput type="text" placeholder="English" formControlName="bookLanguage" required >
-                        <mat-error *ngIf="addBookForm.get('bookLanguage')?.hasError('required')">Please enter a valid book language</mat-error>
+                        <input matInput type="text" placeholder="English" formControlName="language" required >
+                        <mat-error *ngIf="addBookForm.get('language')?.hasError('required')">Please enter a valid book language</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Pages</mat-label>
-                        <input matInput type="number" placeholder="123" formControlName="bookPages" required >
-                        <mat-error *ngIf="addBookForm.get('bookLanguage')?.hasError('required')">Please enter a valid book pages</mat-error>
+                        <input matInput type="number" placeholder="123" formControlName="pages" required >
+                        <mat-error *ngIf="addBookForm.get('pages')?.hasError('required')">Please enter a valid book pages</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Edition</mat-label>
-                        <input matInput type="text" placeholder="12th Edition" formControlName="bookEdition" required >
-                        <mat-error *ngIf="addBookForm.get('bookEdition')?.hasError('required')">Please enter a valid book edition</mat-error>
+                        <input matInput type="text" placeholder="12th Edition" formControlName="edition" required >
+                        <mat-error *ngIf="addBookForm.get('edition')?.hasError('required')">Please enter a valid book edition</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Summary</mat-label>
                         <!-- <input matInput type="text" placeholder="Title" formControlName="bookSummary" required > -->
-                        <textarea matInput placeholder="The book is about...." formControlName="bookSummary"></textarea>
-                        <mat-error *ngIf="addBookForm.get('bookSummary')?.hasError('required')">Please enter a valid book summary</mat-error>
+                        <textarea matInput placeholder="The book is about...." formControlName="summary"></textarea>
+                        <mat-error *ngIf="addBookForm.get('summary')?.hasError('required')">Please enter a valid book summary</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Price</mat-label>
-                        <input matInput type="number" placeholder="123.98" formControlName="bookPrice" required >
-                        <mat-error *ngIf="addBookForm.get('bookPrice')?.hasError('required')">Please enter a valid book price</mat-error>
+                        <input matInput type="number" placeholder="123.98" formControlName="price" required >
+                        <mat-error *ngIf="addBookForm.get('price')?.hasError('required')">Please enter a valid book price</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Availability</mat-label>
-                            <select matNativeControl required formControlName="bookAvailability">
-                                <option value="available">Available</option>
-                                <option value="outofstock">Out of Stock</option>
+                            <select matNativeControl required formControlName="stock">
+                                <option value="AVAILABLE">Available</option>
+                                <option value="OUTOFSTOCK">Out of Stock</option>
                                 
                             </select>
-                        <mat-error *ngIf="addBookForm.get('bookAvailability')?.hasError('required')">Please enter a valid book availability</mat-error>
+                        <mat-error *ngIf="addBookForm.get('stock')?.hasError('required')">Please enter a valid book availability</mat-error>
                     </mat-form-field>
                     
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Rating</mat-label>
-                        <input matInput type="number" placeholder="5.0" formControlName="bookRating" maxlength="1" required >
-                        <mat-error *ngIf="addBookForm.get('bookRating')?.hasError('required')">Please enter a valid book rating</mat-error>
+                        <input matInput type="number" placeholder="5.0" formControlName="rating" maxlength="1" required >
+                        <mat-error *ngIf="addBookForm.get('rating')?.hasError('required')">Please enter a valid book rating</mat-error>
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="form-field">
                         <mat-label>Author</mat-label>
-                        <input matInput type="text" placeholder="Dr. John" formControlName="bookAuthor" required >
-                        <mat-error *ngIf="addBookForm.get('bookAuthor')?.hasError('required')">Please enter a valid book Author</mat-error>
+                        <input matInput type="text" placeholder="Dr. John" formControlName="authorName" required >
+                        <mat-error *ngIf="addBookForm.get('authorName')?.hasError('required')">Please enter a valid book Author</mat-error>
                     </mat-form-field>
 
                     

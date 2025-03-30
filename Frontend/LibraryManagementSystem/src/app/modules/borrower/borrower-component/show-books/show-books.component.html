@@ -1,0 +1,11 @@
+<div class="book-container">
+    <h4>Find Your Guide</h4>
+    <div class="container" >
+        <div class="card-container" *ngFor="let book of books">
+            <img src="6920933.jpg" alt="">
+            <h4>{{ book.title }}</h4>
+            <h6>Price: <strong>{{ book.price }}</strong></h6>
+            <button>Explore</button>
+        </div>
+    </div>
+</div>
