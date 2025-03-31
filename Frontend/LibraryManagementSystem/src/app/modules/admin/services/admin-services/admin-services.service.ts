@@ -25,6 +25,21 @@ export class AdminServicesService {
       });
   }
 
+  getBooks():Observable<any>
+  {
+    return this.http.get<[]>(BASE_URL+'public/book/', {
+      headers:this.createAuthorizationHeader()
+    });
+    
+  }
+
+  getSingleBook(bookid):Observable<any>
+  {
+    return this.http.get<[]>(BASE_URL+'public/book/find/'+bookid,{
+      headers:this.createAuthorizationHeader()
+    });
+  }
+
   createAuthorizationHeader():HttpHeaders{
     let authHeaders:HttpHeaders = new HttpHeaders();
     console.log(StorageService.getToken().trim());

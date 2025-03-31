@@ -6,12 +6,14 @@ import { DashboardComponent } from './borrower-component/dashboard/dashboard.com
 import { ShowBooksComponent } from './borrower-component/show-books/show-books.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
+import { BookComponentComponent } from './borrower-component/book-component/book-component.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    ShowBooksComponent
+    ShowBooksComponent,
+    BookComponentComponent
   ],
   imports: [
     CommonModule,

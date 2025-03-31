@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="header">
+    <h4>{{ book.title }}</h4>
+  </div>
+  <div class="book-container">
+    <div class="left-part">
+      <img src="6920933.jpg" alt="Book Image" />
+    </div>
+    <div class="right-part">
+      <h6>Basic Details</h6>
+      <div class="basic-details">
+        <ul>
+          <li>Language: <strong>{{ book.language }}</strong></li>
+          <li>Genre: <strong>{{ book.genre }}</strong> </li>
+          <li>Author: <strong>{{ book.authorName }}</strong></li>
+          <li>Pages: <strong>{{ book.pages }}</strong></li>
+          <li>Price: <strong>{{ book.price }}</strong></li>
+          <li>Publication: <strong>{{ book.publication }}</strong></li>
+          <li>ISBN: <strong>{{ book.isbn }}</strong></li>
+          <li>Rating: <strong>{{ book.rating }}</strong></li>
+          <li>Availability: <strong>{{ book.stock }}</strong></li>
+          <li><button class="green">Download</button></li>
+          <li><button class="blue">Read</button></li>
+        </ul>
+      </div>
+    </div>
+  
+  </div>
+  <div class="summary-part">
+    <h4>Summary:</h4>
+    <p>
+      {{book.summary}}
+    </p>
+  </div>
+</div>
