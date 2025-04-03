@@ -23,6 +23,13 @@ export class BorrowerServiceService {
 
   }
 
+  getSingleBook(bookId:number):Observable<any>
+  {
+    return this.http.get<[]>(BASE_URL+'public/book/find/'+bookId,{
+      headers:this.createAuthorizationHeader()
+    });
+  }
+
   createAuthorizationHeader():HttpHeaders{
     let authHeaders:HttpHeaders = new HttpHeaders();
     console.log(StorageService.getToken().trim());

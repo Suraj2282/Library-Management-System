@@ -14,13 +14,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {HttpClientModule } from '@angular/common/http';
+import { ShowBooksComponent } from './admin-components/show-books/show-books.component';
+import { BookComponentComponent } from './admin-components/book-component/book-component.component';
+import { UpdateBookComponent } from './admin-components/update-book/update-book.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    AddBooksComponent
+    AddBooksComponent,
+    ShowBooksComponent,
+    BookComponentComponent,
+    UpdateBookComponent
   ],
   imports: [
     CommonModule,
